@@ -13,8 +13,7 @@ class Output
 
     sentence = result.join(' ').capitalize
 
-    # This can be better
-    sentence.slice!(-2)
+    sentence.gsub!(/\s([,.!?—])/, '\1')
 
     sentence
   end
