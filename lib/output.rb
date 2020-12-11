@@ -11,9 +11,7 @@ class Output
       holder << next_word
     end
 
-    sentence = holder.join(' ').capitalize.gsub(/\s([,.!?—])/, '\1')
-
-    sentence
+    holder.join(' ').capitalize.gsub(/\s([,.!?—])/, '\1')
   end
 
   def self.get_next_word(word, data)
