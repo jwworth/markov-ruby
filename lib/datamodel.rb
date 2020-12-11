@@ -11,4 +11,10 @@ class DataModel
 
     result
   end
+
+  def self.tokenize(input)
+    input.downcase.partition(/[\.\!\?]/).flat_map do |substring|
+      substring.split(/\s+/)
+    end
+  end
 end
