@@ -26,6 +26,13 @@ class DataModelTest < Minitest::Test
     assert_equal({ 'one' => ['two'] }, result)
   end
 
+  def test_long_string
+    input = DataModel.prepare(File.read('tests/mock_data/gettysburg.txt')).to_s
+    result = File.read('tests/mock_data/gettysburg_parsed.rb')
+
+    assert_equal(input, result)
+  end
+
   def test_matches
     result = DataModel.prepare('one two one three')
 
