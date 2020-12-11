@@ -1,6 +1,6 @@
 class DataModel
   def self.prepare(input)
-    tokens = input.split(/\s+/)
+    tokens = tokenize(input)
 
     holder = Hash.new([])
     tokens.each_with_object(holder).with_index do |(token, hash), index|
@@ -11,8 +11,8 @@ class DataModel
   end
 
   def self.tokenize(text)
-    text.downcase.partition(/[\.\!\?]/).flat_map do |substring|
-      substring.split(/\s+/)
+    text.downcase.split(/\s+/).flat_map do |substring|
+      substring.split(/([\.\!\?])/)
     end
   end
 end

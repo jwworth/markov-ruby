@@ -1,11 +1,17 @@
 require 'minitest/autorun'
-require '../lib/datamodel'
+require '../lib/data_model'
 
 class DataModelTest < Minitest::Test
   def test_tokenizing
     result = DataModel.tokenize('One two?')
 
     assert_equal(['one', 'two', '?'], result)
+  end
+
+  def test_tokenizing_multiple_delimiters
+    result = DataModel.tokenize('One? two?')
+
+    assert_equal(['one', '?', 'two', '?'], result)
   end
 
   def test_collects_data_from_every_word_with_follower
