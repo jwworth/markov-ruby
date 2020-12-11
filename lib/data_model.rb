@@ -1,9 +1,10 @@
 class DataModel
+  PUNCTUATORS = /([,.!?—])/.freeze
+
   def self.prepare(input)
     tokens = tokenize(input)
 
-    holder = Hash.new([])
-    tokens.each_with_object(holder).with_index do |(token, hash), index|
+    tokens.each_with_object(Hash.new([])).with_index do |(token, hash), index|
       next if index == tokens.length - 1
 
       hash[token] += [tokens[index + 1]]
@@ -12,7 +13,7 @@ class DataModel
 
   def self.tokenize(text)
     text.downcase.split(/\s+/).flat_map do |substring|
-      substring.split(/([,.!?—])/)
+      substring.split(PUNCTUATORS)
     end
   end
 end
