@@ -14,6 +14,12 @@ class DataModelTest < Minitest::Test
     assert_equal(['one', '?', 'two', '?'], result)
   end
 
+  def test_tokenizing_commas
+    result = DataModel.tokenize('One, two?')
+
+    assert_equal(['one', ',', 'two', '?'], result)
+  end
+
   def test_collects_data_from_every_word_with_follower
     result = DataModel.prepare('one two')
 

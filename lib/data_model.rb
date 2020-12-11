@@ -12,7 +12,7 @@ class DataModel
 
   def self.tokenize(text)
     text.downcase.split(/\s+/).flat_map do |substring|
-      substring.split(/([\.\!\?])/)
+      substring.split(/([,.!?—])/)
     end
   end
 end
