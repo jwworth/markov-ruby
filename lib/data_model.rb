@@ -6,10 +6,10 @@ class DataModel
   def self.prepare(text)
     tokens = tokenize(text)
 
-    tokens.each_with_object(Hash.new([])).with_index do |(token, hash), index|
+    tokens.each_with_object(Hash.new([])).with_index do |(token, holder), index|
       next if index == tokens.length - 1
 
-      hash[token] += [tokens[index + 1]]
+      holder[token] += [tokens[index + 1]]
     end
   end
 
