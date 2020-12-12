@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require './lib/data_model'
+require './lib/output'
+
+data = DataModel.prepare(File.read(ARGV[0]))
+p Output.sentence(data)
