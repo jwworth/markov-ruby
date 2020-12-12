@@ -10,9 +10,7 @@ class Output
     holder = [current_word, next_word]
 
     until next_word.match(TERMINATORS)
-      current_word = next_word
-      next_word = data[current_word].sample
-
+      next_word = data[next_word].sample
       holder << next_word
     end
 
